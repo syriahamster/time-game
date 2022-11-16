@@ -1,5 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
+  import { tweened } from 'svelte/motion'
   import questionJson from '../static/questions_kor.json'
   import InputSection from './InputSection.svelte';
   import ResultSection from './ResultSection.svelte';
@@ -7,6 +8,7 @@
 
   let score = 0;
   let life = 100;
+  let lifeLost = 0
   let current = 1900;
 
   let mode = "input"; //input, result
@@ -15,11 +17,24 @@
   let showNextBtn = false
   let questionIdx = 0;
 
+  let animatedLife = tweened(life, {
+    interpolate: (frm, to) => t => Math.floor(frm + ((to - frm) * t))
+  })
+  let lifeAnimationTimeout
+
+
   const enterGuess = () => {
     if (current === questionAnswerMap[questionIdx].year) {
       score += 1;
     } else {
-      life -= Math.abs(current - showAnswer);
+      lifeLost = Math.abs(current - showAnswer);
+      life = Math.max(0, life - (lifeLost))
+
+      lifeAnimationTimeout = setTimeout(() => {
+            animatedLife.set(life), {
+              duration: lifeLost * 50
+            }
+          }, 2000)
     }
     mode = "result";
     showNextBtn = true
@@ -31,6 +46,9 @@
     mode = "input";
     showNextBtn = false
     showAnswer = questionAnswerMap[questionIdx].year
+    
+    clearTimeout(lifeAnimationTimeout)
+    animatedLife.set(life)
   };
 
   const retry = () => {
@@ -38,6 +56,12 @@
     score = 0;
     life = 100;
     mode = "input";
+
+    showNextBtn=false
+    animatedLife.set(life), {
+      duration: 100 * 50
+    }
+
   };
 
   const isAlive = () => {
@@ -45,8 +69,8 @@
   };
 </script>
 
-<div>
-  <div class="text-xl font-bold">현재점수:{score}, 남은 생명:{life}</div>
+<div class="card">
+  <div class="text-xl font-bold">현재점수:{score}, 남은 생명:{$animatedLife}</div>
   <div>문제{questionIdx + 1}) {@html questionAnswerMap[questionIdx].question}</div>
 
   {#if mode === "input"}
@@ -56,9 +80,10 @@
   {:else if mode === "result"}
     <ResultSection questionAnswerMap={questionAnswerMap}
                    current={current}
-                   questionIdx={questionIdx}>
+                   questionIdx={questionIdx}
+                   lifeLost={lifeLost}>
 
-      <div class='m-2' in:fade="{{delay:1600, duration:500}}">
+      <div class='info m-2' in:fade="{{delay:1600, duration:500}}">
           정보 : {questionAnswerMap[questionIdx].description}
       </div>            
     </ResultSection>
@@ -75,10 +100,18 @@
 
 
 <style>
+.card{
+  padding: 30px 30px;
+  margin: 10px;
+  line-height: 40px;
+  background-color: rgba(255,255,255,0.1);
+  transition : 1s;
+}
+
 .info{
-  border-radius: 2px;
-  border-width: 2px;
-  border-color: rgba(255,255,255,0.5)
+  padding: 0px 10px;
+  border-width: 1px;
+  border-color: rgba(255,255,255,0.3)
 }
 
 </style>

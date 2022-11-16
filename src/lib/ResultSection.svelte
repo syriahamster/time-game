@@ -4,6 +4,7 @@
     export let questionAnswerMap
     export let current
     export let questionIdx
+    export let lifeLost
 </script>
 
 <div>
@@ -13,7 +14,7 @@
     {#if current === questionAnswerMap[questionIdx].year}
         정답입니다!
     {:else}
-        틀렸습니다!
+        틀렸습니다! (<b class="red">{lifeLost}</b>년 차이)
     {/if}
 </div>
 
@@ -23,5 +24,7 @@
 
 
 <style>
-
+.red {
+    color:red;
+}
 </style>
