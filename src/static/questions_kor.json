@@ -1,0 +1,84 @@
+{
+    "question_list": [
+        {
+            "year": 1945,
+            "question": "한국이 일본으로부터 <em>독립</em>한 년도는?",
+            "description": "1945년 8월 15일 대한민국은 독립하였다."
+        },
+        {
+            "year": 1950,
+            "question": "<em>한국전쟁</em>이 발발한 년도는?",
+            "description": "1950년 6월 25일 북한이 남침을 시작하며 전쟁이 시작되었다"
+        },
+        {
+            "year": 1910,
+            "question": "<em>일제강점기</em>가 시작된 년도는?",
+            "description": "1910년 8월 29일 한일 병합 조약에 의거 한국이 일본에 강제 병합되었다"
+        },
+        {
+            "year": 1938,
+            "question": "<em>삼성</em>그룹의 전신인 삼성상회의 설립.\n",
+            "description":""
+        },
+        {
+            "year": 1969,
+            "question": "<em>삼성전자</em>가 창립함.\n",
+            "description":""
+        },
+        {
+            "year": 1945,
+            "question": "대한민국이 일본으로부터 <em>해방</em>(독립)됨.\n",
+            "description":""
+        },
+        {
+            "year": 1910,
+            "question": "<em>대한제국이</em> 일본의 식민지가됨.\n",
+            "description":""
+        },
+        {
+            "year": 1950,
+            "question": "북한 공산당 세력의 남침으로 <em>6.25전쟁</em> 발발.\n",
+            "description":""
+        },
+        {
+            "year": 1919,
+            "question": "3.1운동 정신을 계승한 상해임시정부 수립.\n",
+            "description":""
+        },
+        {
+            "year": 1948,
+            "question": "국가 3요소 수립기준의 대한민국 건국.\n",
+            "description":""
+        },
+        {
+            "year": 2013,
+            "question": "방탄소년단(BTS) 데뷔.\n",
+            "description":""
+        },
+        {
+            "year": 2012,
+            "question": "싸이가 6집(강남스타일) 발매함.\n",
+            "description":""
+        },
+        {
+            "year": 1975,
+            "question": "남산타워(현 N Seoul Tower) 완공.\n",
+            "description":""
+        },
+        {
+            "year": 2016,
+            "question": "잠실롯데타워(Lotte World Tower) 완공 (개장연도가 아님).\n",
+            "description":""
+        },
+        {
+            "year": 1988,
+            "question": "코엑스 트레이드타워(Trade Tower) 완공.\n",
+            "description":""
+        },
+        {
+            "year": 2010,
+            "question": "G20 서울 정상회의 개최.\n",
+            "description":""
+        }
+    ]
+}
