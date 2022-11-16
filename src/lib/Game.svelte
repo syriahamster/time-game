@@ -51,48 +51,62 @@
   };
 </script>
 
-<div>현재점수:{score}, 남은 생명:{life}</div>
-<div>문제{questionIdx + 1}) {questionAnswerMap[questionIdx].q}</div>
 <div>
-  아마도 {current} 년?
-</div>
-{#if mode === "input"}
-  <input
-    type="range"
-    min="1900"
-    max="2022"
-    bind:value={current}
-    class="slider"
-    id="myRange"
-    style="width: 300px;"
-  />
-
+  <div class="text-xl font-bold">현재점수:{score}, 남은 생명:{life}</div>
+  <div>문제{questionIdx + 1}) {questionAnswerMap[questionIdx].q}</div>
   <div>
-    <input type="button" value="확인" on:click={() => enterGuess()} />
+    아마도 <span class="font-bold">
+      {current}
+    </span>
+    년?
   </div>
-{:else if mode === "result"}
-  <div>
-    {#if current === questionAnswerMap[questionIdx].a}
-      정답입니다!
+  {#if mode === "input"}
+    <input
+      type="range"
+      min="1900"
+      max="2022"
+      bind:value={current}
+      class="slider"
+      id="myRange"
+      style="width: 300px;"
+    />
+
+    <div>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        on:click={enterGuess}
+      >
+        확인
+      </button>
+    </div>
+  {:else if mode === "result"}
+    <div>
+      {#if current === questionAnswerMap[questionIdx].a}
+        정답입니다!
+      {:else}
+        틀렸습니다!
+      {/if}
+    </div>
+    <div>
+      정답: {questionAnswerMap[questionIdx].a}년
+    </div>
+    <div>
+      {questionAnswerMap[questionIdx].d}
+    </div>
+
+    {#if isAlive()}
+      <div>
+        <button class="btn btn-outline" on:click={() => nextQuestion()}
+          >다음문제</button
+        >
+      </div>
     {:else}
-      틀렸습니다!
+      <div>게임이 끝났습니다</div>
+      <div>
+        <button class="btn btn-outline" on:click={() => retry()}
+          >다시하기</button
+        >
+      </div>
     {/if}
-  </div>
-  <div>
-    정답: {questionAnswerMap[questionIdx].a}년
-  </div>
-  <div>
-    {questionAnswerMap[questionIdx].d}
-  </div>
-
-  {#if isAlive()}
-    <div>
-      <input type="button" value="다음문제" on:click={() => nextQuestion()} />
-    </div>
-  {:else}
-    <div>게임이 끝났습니다</div>
-    <div>
-      <input type="button" value="다시하기" on:click={() => retry()} />
-    </div>
   {/if}
-{/if}
+</div>
