@@ -1,4 +1,5 @@
 <script>
+  import { fade } from 'svelte/transition';
   import questionJson from '../static/questions_kor.json'
   import InputSection from './InputSection.svelte';
   import ResultSection from './ResultSection.svelte';
@@ -29,6 +30,7 @@
     questionIdx += 1;
     mode = "input";
     showNextBtn = false
+    showAnswer = questionAnswerMap[questionIdx].year
   };
 
   const retry = () => {
@@ -55,7 +57,8 @@
     <ResultSection questionAnswerMap={questionAnswerMap}
                    current={current}
                    questionIdx={questionIdx}>
-      <div class='m-2'>
+
+      <div class='m-2' in:fade="{{delay:1600, duration:500}}">
           정보 : {questionAnswerMap[questionIdx].description}
       </div>            
     </ResultSection>
