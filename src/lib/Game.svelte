@@ -1,10 +1,15 @@
 <script>
   import { fade } from 'svelte/transition';
   import { tweened } from 'svelte/motion'
-  import questionJson from '../static/questions_kor.json'
+  import questionDefalut from '../static/quiz_kor_history.json'
   import InputSection from './InputSection.svelte';
   import ResultSection from './ResultSection.svelte';
   import NextBtns from './NextBtns.svelte';
+
+  export let quizdata = questionDefalut
+  export let is_game_mode = true
+
+  let questionJson = quizdata
 
   let score = 0;
   let life = 100;
@@ -12,10 +17,13 @@
   let current = 1900;
 
   let mode = "input"; //input, result
-  let showAnswer = 1945;
-  const questionAnswerMap = questionJson["question_list"]
   let showNextBtn = false
   let questionIdx = 0;
+  
+  const questionAnswerMap = questionJson["question_list"]
+  
+  questionAnswerMap.sort(() => Math.random() - 0.5) //shuffe quiz array
+  let showAnswer = questionAnswerMap[questionIdx].year;
 
   let animatedLife = tweened(life, {
     interpolate: (frm, to) => t => Math.floor(frm + ((to - frm) * t))
@@ -52,7 +60,9 @@
   };
 
   const retry = () => {
+    questionAnswerMap.sort(() => Math.random() - 0.5)
     questionIdx = 0;
+    showAnswer = questionAnswerMap[questionIdx].year
     score = 0;
     life = 100;
     mode = "input";
@@ -97,6 +107,10 @@
   {/if}
 
 </div>
+
+<button on:click={()=>{is_game_mode=false}}>
+  메인으로
+</button>
 
 
 <style>
