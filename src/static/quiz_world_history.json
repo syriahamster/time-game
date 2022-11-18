@@ -21,8 +21,18 @@
     },
     "question_list": [
         {
+            "year": 1900,
+            "question": "종로에 가로등이 처음 설치된 년도는?",
+            "description": "1900년 4월 10일 종로에 가로등이 처음 설치되었다."
+        },
+        {
+            "year": 1919,
+            "question": "3.1 운동이 일어난 년도는?",
+            "description": ""
+        },
+        {
             "year": 1945,
-            "question": "한국이 일본으로부터 <em>독립</em>한 년도는?",
+            "question": "대한민국이 일본으로부터 <em>독립</em>한 년도는?",
             "description": "1945년 8월 15일 대한민국은 독립하였다."
         },
         {
@@ -31,43 +41,28 @@
             "description": "1950년 6월 25일 북한이 남침을 시작하며 전쟁이 시작되었다"
         },
         {
+            "year": 1953,
+            "question": "<em>한국전쟁</em>의 정전협정이 이뤄진 년도는?",
+            "description": "1953년 7월 27일 10시 판문점에서 영문, 한국문, 중국믄으로 작성된 정전협정이 체결되었다."
+        },
+        {
             "year": 1910,
             "question": "<em>일제강점기</em>가 시작된 년도는?",
             "description": "1910년 8월 29일 한일 병합 조약에 의거 한국이 일본에 강제 병합되었다"
         },
         {
             "year": 1938,
-            "question": "<em>삼성</em>그룹의 전신인 삼성상회의 설립.\n",
+            "question": "<em>삼성</em>그룹의 전신인 삼성상회의 설립된 년도는?\n",
             "description":""
         },
         {
             "year": 1969,
-            "question": "<em>삼성전자</em>가 창립함.\n",
-            "description":""
-        },
-        {
-            "year": 1945,
-            "question": "대한민국이 일본으로부터 <em>해방</em>(독립)됨.\n",
-            "description":""
-        },
-        {
-            "year": 1910,
-            "question": "<em>대한제국이</em> 일본의 식민지가됨.\n",
-            "description":""
-        },
-        {
-            "year": 1950,
-            "question": "북한 공산당 세력의 남침으로 <em>6.25전쟁</em> 발발.\n",
+            "question": "<em>삼성전자</em>가 창립된 년도는?\n",
             "description":""
         },
         {
             "year": 1919,
-            "question": "3.1운동 정신을 계승한 상해임시정부 수립.\n",
-            "description":""
-        },
-        {
-            "year": 1948,
-            "question": "국가 3요소 수립기준의 대한민국 건국.\n",
+            "question": "3.1운동 정신을 계승하여 임시정부가 수립된 년도는?\n",
             "description":""
         },
         {
@@ -86,9 +81,9 @@
             "description":""
         },
         {
-            "year": 2016,
-            "question": "잠실롯데타워(Lotte World Tower) 완공 (개장연도가 아님).\n",
-            "description":""
+            "year": 2017,
+            "question": "잠실롯데타워(Lotte World Tower) 개장한 년도는?\n",
+            "description":"잠실롯데타워는 2016년 12월 22일 완공되었고, 2017년 4월 3일 개장하였다."
         },
         {
             "year": 1988,
