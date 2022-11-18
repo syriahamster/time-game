@@ -14,7 +14,7 @@
     bind:value={current}
     class="slider"
     id="myRange"
-    style="width: 300px;"
+    style="width: 100%;"
 />
 
 <slot>
