@@ -1,6 +1,7 @@
 <script>
-  import { fade } from "svelte/transition";
+  import { fade, fly, scale } from "svelte/transition";
   import { tweened } from "svelte/motion";
+  import { quartIn } from 'svelte/easing'
   import questionDefalut from "../static/quiz_kor_history.json";
   import InputSection from "./InputSection.svelte";
   import ResultSection from "./ResultSection.svelte";
@@ -34,7 +35,7 @@
   let score_level = "측정중.."
   const updateScoreLevel = () => {
     try {
-      if (score > 1 && quizdata["score_level"][score.toFixed(0)]){
+      if (score > 0 && quizdata["score_level"][score.toFixed(0)]){
         score_level = quizdata["score_level"][score.toFixed(0)]
       }
     } catch {
@@ -94,18 +95,30 @@
   };
 
   const isAlive = () => {
-    return life > 0 && questionAnswerMap.length - 1 > questionIdx;
+    return (life > 0 && questionAnswerMap.length - 1 > questionIdx) && (quizdata["quiz_max"] > questionIdx);
   };
 </script>
 
 <h2 class="quiz_title"> {quiz_title} </h2>
-<h3 class="quiz_title"> ({score_level}) </h3>
+
+{#key score_level} 
+  <h3 class="quiz_title" in:scale={{ delay: 1200, duration: 500,  start: 1.5, opacity: 0.0, easing: quartIn}}> ({score_level}) </h3>
+{/key} 
+
 <div class="card">
   <div class="text-xl font-bold">
-    Quiz {questionIdx+1}. 현재점수:{score}, 남은 생명:{$animatedLife}
+    Quiz {questionIdx+1}.
+    현재점수:
+    {#key score} 
+      <!-- <span style="display: inline-block" in:fly={{ y: 10, delay: 500 }}> -->
+      <span style="display: inline-block" in:scale={{ delay: 500, duration: 500,  start: 3, opacity: 0.0, easing: quartIn}}>
+        {score}
+      </span>
+	  {/key},
+   남은 생명:{$animatedLife}
   </div>
   <div>
-    문제{questionIdx + 1} - {@html questionAnswerMap[questionIdx].question}
+   언제일까? {@html questionAnswerMap[questionIdx].question}
   </div>
 
   {#if mode === "input"}
@@ -113,7 +126,7 @@
   {:else if mode === "result"}
     <ResultSection {questionAnswerMap} {current} {questionIdx} {lifeLost}>
       <div class="info m-2" in:fade={{ delay: 1600, duration: 500 }}>
-        정보 : {questionAnswerMap[questionIdx].description}
+        정보 : {@html questionAnswerMap[questionIdx].description}
       </div>
     </ResultSection>
   {/if}

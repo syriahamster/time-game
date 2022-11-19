@@ -28,7 +28,7 @@
             한국사 테스트 (근현대)
         </button>
         <button class="btn" on:click={()=>{is_game_mode=!is_game_mode; quizData=quizKorTrend}}>
-            최신트랜트 테스트
+            한국 트랜드 테스트
         </button>
         <button class="btn" on:click={()=>{is_game_mode=!is_game_mode; quizData=quizWorldHistory}}>
             세계사 테스트
