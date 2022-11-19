@@ -1,5 +1,6 @@
 <script>
-    import { fade } from 'svelte/transition';
+    import { fade, scale } from 'svelte/transition';
+    import { quartIn } from 'svelte/easing';
 
     export let questionAnswerMap
     export let current
@@ -8,13 +9,17 @@
 </script>
 
 <div>
-    당신의 선택 <b>{current}</b>년 - <span in:fade="{{delay:0, duration:500}}">정답 <b>{questionAnswerMap[questionIdx].year}</b>년</span>
+    당신의 선택 <b>{current}</b>년 - <span in:fade={{delay:0, duration:500}}>정답 <b>{questionAnswerMap[questionIdx].year}</b>년</span>
 </div>
-<div in:fade="{{delay:800, duration:500}}">
+<div>
     {#if current === questionAnswerMap[questionIdx].year}
-        정답입니다!
+        <span in:scale={{delay:800, duration: 500, start: 3, opacity: 0.0, easing: quartIn}}>
+            정답입니다!
+        </span>
     {:else}
-        틀렸습니다! (<b class="red">{lifeLost}</b>년 차이)
+        <span in:fade={{delay:800, duration:500}}>
+            틀렸습니다! (<b class="red">{lifeLost}</b>년 차이)
+        </span>
     {/if}
 </div>
 

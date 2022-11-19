@@ -1,6 +1,7 @@
 <script>
-  import { fade } from "svelte/transition";
+  import { fade, fly, scale } from "svelte/transition";
   import { tweened } from "svelte/motion";
+  import { quartIn } from 'svelte/easing'
   import questionDefalut from "../static/quiz_kor_history.json";
   import InputSection from "./InputSection.svelte";
   import ResultSection from "./ResultSection.svelte";
@@ -9,18 +10,19 @@
   export let quizdata = questionDefalut;
   export let is_game_mode = true;
 
-  let questionJson = quizdata;
+  const quiz_title = quizdata["title"]
+  const yearRange = quizdata["year_range"]
+  const questionAnswerMap = quizdata["question_list"];
 
   let score = 0;
-  let life = 100;
+  let life = quizdata["default_life"];
   let lifeLost = 0;
-  let current = 1900;
+  // let current = 1900;
+  let current = Math.ceil((yearRange.start + yearRange.end)/2);
 
   let mode = "input"; //input, result
   let showNextBtn = false;
   let questionIdx = 0;
-
-  const questionAnswerMap = questionJson["question_list"];
 
   questionAnswerMap.sort(() => Math.random() - 0.5); //shuffe quiz array
   let showAnswer = questionAnswerMap[questionIdx].year;
@@ -29,6 +31,17 @@
     interpolate: (frm, to) => (t) => Math.floor(frm + (to - frm) * t),
   });
   let lifeAnimationTimeout;
+ 
+  let score_level = "측정중.."
+  const updateScoreLevel = () => {
+    try {
+      if (score > 0 && quizdata["score_level"][score.toFixed(0)]){
+        score_level = quizdata["score_level"][score.toFixed(0)]
+      }
+    } catch {
+      console.log("skip calculate score_level")      
+    }
+  }
 
   const enterGuess = () => {
     if (current !== questionAnswerMap[questionIdx].year) {
@@ -41,13 +54,18 @@
             duration: lifeLost * 50,
           };
       }, 2000);
-    }
-
-    if (life >= 0) {
+    } else {
       score += 1;
     }
+
+    // if (life >= 0) {
+    //   score += 1;
+    // }
     mode = "result";
     showNextBtn = true;
+    
+    updateScoreLevel()
+
   };
 
   const nextQuestion = () => {
@@ -73,27 +91,42 @@
       {
         duration: 100 * 50,
       };
+    score_level = "측정중.."
   };
 
   const isAlive = () => {
-    return life > 0 && questionAnswerMap.length - 1 > questionIdx;
+    return (life > 0 && questionAnswerMap.length - 1 > questionIdx) && (quizdata["quiz_max"] > questionIdx);
   };
 </script>
 
+<h2 class="quiz_title"> {quiz_title} </h2>
+
+{#key score_level} 
+  <h3 class="quiz_title" in:scale={{ delay: 1200, duration: 500,  start: 1.5, opacity: 0.0, easing: quartIn}}> ({score_level}) </h3>
+{/key} 
+
 <div class="card">
   <div class="text-xl font-bold">
-    현재점수:{score}, 남은 생명:{$animatedLife}
+    Quiz {questionIdx+1}.
+    현재점수:
+    {#key score} 
+      <!-- <span style="display: inline-block" in:fly={{ y: 10, delay: 500 }}> -->
+      <span style="display: inline-block" in:scale={{ delay: 500, duration: 500,  start: 3, opacity: 0.0, easing: quartIn}}>
+        {score}
+      </span>
+	  {/key},
+   남은 생명:{$animatedLife}
   </div>
   <div>
-    문제{questionIdx + 1}) {@html questionAnswerMap[questionIdx].question}
+   언제일까? {@html questionAnswerMap[questionIdx].question}
   </div>
 
   {#if mode === "input"}
-    <InputSection bind:current {enterGuess} />
+    <InputSection bind:current {enterGuess} year_range_start={quizdata["year_range"].start} year_range_end={quizdata["year_range"].end} />
   {:else if mode === "result"}
     <ResultSection {questionAnswerMap} {current} {questionIdx} {lifeLost}>
       <div class="info m-2" in:fade={{ delay: 1600, duration: 500 }}>
-        정보 : {questionAnswerMap[questionIdx].description}
+        정보 : {@html questionAnswerMap[questionIdx].description}
       </div>
     </ResultSection>
   {/if}
@@ -112,6 +145,10 @@
 </button>
 
 <style>
+  .quiz_title{
+    font-size: 20px;
+    font-weight: 500;
+  }
   .card {
     padding: 30px 30px;
     margin: 10px;

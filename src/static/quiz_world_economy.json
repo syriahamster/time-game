@@ -21,9 +21,14 @@
     },
     "question_list": [
         {
-            "year": 1900,
-            "question": "종로에 가로등이 처음 설치된 년도는?",
-            "description": "1900년 4월 10일 종로에 가로등이 처음 설치되었다."
+            "year": 1938,
+            "question": "<em>삼성</em>그룹의 전신인 삼성상회의 설립된 년도는?\n",
+            "description":""
+        },
+        {
+            "year": 1969,
+            "question": "<em>삼성전자</em>가 창립된 년도는?\n",
+            "description":""
         }
     ]
 }
