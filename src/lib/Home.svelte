@@ -10,9 +10,11 @@
     let quizData = null;
 
 </script>
-<h2>당신의 상식수준은?</h2>
 
-<span>game mode : {is_game_mode}</span>
+<!-- <span>game mode : {is_game_mode}</span> -->
+
+<h2 class="service_title">한국인 상식수준 측정기</h2>
+<br>
 
 {#if is_game_mode}
     <div class="quiz_section" in:fade="{{delay:200, duration:500}}">
@@ -23,7 +25,7 @@
 {:else}
     <div class="quiz_section" in:fade="{{delay:200, duration:500}}">
         <button class="btn" on:click={()=>{is_game_mode=!is_game_mode; quizData=quizKorHistory}}>
-            한국역사 테스트
+            한국사 테스트 (근현대)
         </button>
         <button class="btn" on:click={()=>{is_game_mode=!is_game_mode; quizData=quizKorTrend}}>
             최신트랜트 테스트
@@ -38,7 +40,10 @@
 
 
 <style>
-
+.service_title{
+    font-size: 35px;
+    font-weight: 700;
+}
 .quiz_section {
     padding: 5px;
     min-width: 350px;
