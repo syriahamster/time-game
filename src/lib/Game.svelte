@@ -141,7 +141,8 @@
 
 <button
   on:click={() => {
-    is_game_mode = false;
+    const r = window.confirm("메인으로 돌아가시겠습니까?") 
+    if (r) is_game_mode = false;
   }}
 >
   메인으로
