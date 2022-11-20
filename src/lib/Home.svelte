@@ -19,7 +19,7 @@
 {#if is_game_mode}
     <div class="quiz_section" in:fade="{{delay:200, duration:500}}">
         <Game bind:is_game_mode
-              quizdata={quizData}>
+            quizdata={quizData}>
         </Game>
     </div>
 {:else}
@@ -45,9 +45,8 @@
     font-weight: 700;
 }
 .quiz_section {
-    padding: 5px;
-    min-width: 350px;
-    max-width: 100%;
+    
+    max-width: 100vw;
     display: inline-block;
 }
 
