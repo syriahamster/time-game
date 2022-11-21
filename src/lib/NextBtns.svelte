@@ -20,27 +20,37 @@
             <!-- svelte-ignore security-anchor-rel-noreferrer -->
             <a
                 href="https://twitter.com/intent/tweet?text=한국인 상식수준 측정기&url={url}"
-                class="btn m-2"
+                class="btn m-2 gap-2"
                 data-size="large"
                 target="_blank"
-                data-show-count="false">트위터로 공유하기</a>
+                data-show-count="false">
+                <i class="fa-brands fa-twitter"></i>
+            <!-- <img src="/twittericon.png" alt="twitter" width="20px"/> -->
+                <span>
+                    트위터로 공유하기
+                </span>
+            </a>
         </div>
         <!-- share to facebook -->
         <div>
             <!-- svelte-ignore security-anchor-rel-noreferrer -->
             <a
                 href="https://www.facebook.com/sharer/sharer.php?u={url}"
-                class="btn m-2"
+                class="btn m-2 gap-2"
                 data-size="large"
                 target="_blank"
-                data-show-count="false">페이스북으로 공유하기</a>
+                data-show-count="false">
+                <i class="fa-brands fa-facebook"></i>
+                페이스북으로 공유하기</a>
         </div>
         <!-- share copy link -->
         <div>
-            <button class="btn m-2" on:click={() => {
+            <button class="btn m-2 gap-2" on:click={() => {
                 navigator.clipboard.writeText(url)
                 window.alert("링크가 복사되었습니다")
-            }}>링크 복사하기</button>
+            }}>
+            <i class="fa-solid fa-share-nodes"></i>
+            링크 복사하기</button>
 
             </div>
 
