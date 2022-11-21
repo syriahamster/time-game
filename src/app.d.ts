@@ -7,4 +7,18 @@ declare namespace App {
 	// interface PageData {}
 	// interface Error {}
 	// interface Platform {}
+
+	interface Locals {}
+
+	interface Platform {
+		env: {};
+		context: {
+			waitUntil(promise: Promise<any>): void;
+		};
+		caches: CacheStorage & { default: Cache };
+	}
+
+	interface Session {}
+
+	interface Stuff {}
 }
