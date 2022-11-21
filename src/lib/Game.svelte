@@ -107,26 +107,29 @@
 
 <div class="card">
   <div class="text-xl font-bold">
-    Quiz {questionIdx+1}.
     현재점수:
     {#key score} 
       <!-- <span style="display: inline-block" in:fly={{ y: 10, delay: 500 }}> -->
       <span style="display: inline-block" in:scale={{ delay: 500, duration: 500,  start: 3, opacity: 0.0, easing: quartIn}}>
         {score}
       </span>
-	  {/key},
+	  {/key}
+    <br />
    남은 생명:{$animatedLife}
+  </div>
+  <br />
+  <div class="text-xl font-bold">
+    Quiz {questionIdx+1}.
   </div>
   <div>
    언제일까? {@html questionAnswerMap[questionIdx].question}
   </div>
-
   {#if mode === "input"}
-    <InputSection bind:current {enterGuess} year_range_start={quizdata["year_range"].start} year_range_end={quizdata["year_range"].end} />
+    <InputSection bind:current {enterGuess} year_range_start={yearRange.start} year_range_end={yearRange.end} />
   {:else if mode === "result"}
     <ResultSection {questionAnswerMap} {current} {questionIdx} {lifeLost}>
-      <div class="info m-2" in:fade={{ delay: 1600, duration: 500 }}>
-        정보 : {@html questionAnswerMap[questionIdx].description}
+      <div class="p-4 m-2 bg-gray-200 border-green-900 rounded-md text-sm" in:fade={{ delay: 1600, duration: 500 }}>
+        {@html questionAnswerMap[questionIdx].description}
       </div>
     </ResultSection>
   {/if}
@@ -138,7 +141,8 @@
 
 <button
   on:click={() => {
-    is_game_mode = false;
+    const r = window.confirm("메인으로 돌아가시겠습니까?") 
+    if (r) is_game_mode = false;
   }}
 >
   메인으로
@@ -150,16 +154,9 @@
     font-weight: 500;
   }
   .card {
-    padding: 30px 30px;
     margin: 10px;
     line-height: 40px;
     background-color: rgba(255, 255, 255, 0.1);
     transition: 1s;
-  }
-
-  .info {
-    padding: 0px 10px;
-    border-width: 1px;
-    border-color: rgba(255, 255, 255, 0.3);
   }
 </style>
