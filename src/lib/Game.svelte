@@ -2,7 +2,7 @@
   import { fade, fly, scale } from "svelte/transition";
   import { tweened } from "svelte/motion";
   import { quartIn } from 'svelte/easing'
-  import questionDefalut from "../static/quiz_kor_history.json";
+  import questionDefalut from "/src/static/quiz_kor_history.json";
   import InputSection from "./InputSection.svelte";
   import ResultSection from "./ResultSection.svelte";
   import NextBtns from "./NextBtns.svelte";
@@ -106,16 +106,19 @@
 {/key} 
 
 <div class="card">
-  <div class="text-xl font-bold">
-    현재점수:
-    {#key score} 
-      <!-- <span style="display: inline-block" in:fly={{ y: 10, delay: 500 }}> -->
-      <span style="display: inline-block" in:scale={{ delay: 500, duration: 500,  start: 3, opacity: 0.0, easing: quartIn}}>
-        {score}
-      </span>
-	  {/key}
-    <br />
-   남은 생명:{$animatedLife}
+  <div class="text-lg font-bold">
+    <span>
+      Score 
+      {#key score} 
+        <!-- <span style="display: inline-block" in:fly={{ y: 10, delay: 500 }}> -->
+        <span style="display: inline-block" in:scale={{ delay: 500, duration: 500,  start: 3, opacity: 0.0, easing: quartIn}}>
+          {score}
+        </span>
+      {/key}
+    </span>
+   <span>
+     ❤️x{$animatedLife}
+   </span>
   </div>
   <br />
   <div class="text-xl font-bold">
@@ -142,7 +145,10 @@
 <button
   on:click={() => {
     const r = window.confirm("메인으로 돌아가시겠습니까?") 
-    if (r) is_game_mode = false;
+    if (r) {
+      is_game_mode = false;
+      window.location.href = '/';
+    }
   }}
 >
   메인으로
@@ -155,6 +161,7 @@
   }
   .card {
     margin: 10px;
+    padding: 10px 20px;
     line-height: 40px;
     background-color: rgba(255, 255, 255, 0.1);
     transition: 1s;
