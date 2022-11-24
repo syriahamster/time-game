@@ -13,7 +13,7 @@
 
 <!-- <span>game mode : {is_game_mode}</span> -->
 
-<h2 class="service_title">한국인 상식수준 측정기</h2>
+<h2 class="service_title">나의 상식레벨은?</h2>
 <br>
 
 {#if is_game_mode}

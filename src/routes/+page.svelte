@@ -10,7 +10,7 @@
 <main>
     <div class="card">
         <Home />
-        <a href="/kor_history"><button>근현대 한국사 측정기</button></a>
+        <a href="/kor_history"><button>근현대 한국사 측정기 (난이도 어려움)</button></a>
         <br>
         <p>svelte kit doc : <a href="https://kit.svelte.dev">kit.svelte.dev</a></p>
     </div>   
