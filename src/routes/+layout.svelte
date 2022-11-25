@@ -19,7 +19,8 @@
 		}
 	}
 </script>
-<div class="bg-white dark:bg-slate-800">
+<div class="bg-white dark:bg-slate-800 h-screen">
+	<div class="flex justify-center items-center"></div>
 	<div class="flex flex-row-reverse mb-2 p-4">
 		{#if darkmode === 'dark'}
 			<button class="btn bg-slate-700" on:click={toggleDarkMode}>🌞</button>
@@ -27,7 +28,7 @@
 			<button class="btn bg-slate-100" on:click={toggleDarkMode}>🌙</button>
 		{/if}
 	</div>
-	<div class="contents">
+	<div class="flex justify-center items-center dark:text-white">
 		<slot />
 	</div>
 </div>
