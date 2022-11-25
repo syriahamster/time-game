@@ -8,7 +8,7 @@
 
 <div in:fade="{{delay:2400, duration:500}}">
     {#if isAlive()}
-        <button class="btn btn-outline" on:click={() => nextQuestion()}
+        <button class="btn btn-outline dark:text-white" on:click={() => nextQuestion()}
             >다음문제</button
         >
 
@@ -54,7 +54,7 @@
 
             </div>
 
-        <button class="btn btn-outline" on:click={() => retry()}
+        <button class="btn btn-outline dark:text-white" on:click={() => retry()}
             >다시하기</button
         >
     {/if}

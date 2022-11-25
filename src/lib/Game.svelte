@@ -131,7 +131,7 @@
     <InputSection bind:current {enterGuess} year_range_start={yearRange.start} year_range_end={yearRange.end} />
   {:else if mode === "result"}
     <ResultSection {questionAnswerMap} {current} {questionIdx} {lifeLost}>
-      <div class="p-4 m-2 bg-gray-200 border-green-900 rounded-md text-sm" in:fade={{ delay: 1600, duration: 500 }}>
+      <div class="p-4 m-2 bg-gray-200 border-green-900 rounded-md text-sm dark:text-black" in:fade={{ delay: 1600, duration: 500 }}>
         {@html questionAnswerMap[questionIdx].description}
       </div>
     </ResultSection>
