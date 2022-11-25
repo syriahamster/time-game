@@ -105,7 +105,7 @@
   <h3 class="quiz_title" in:scale={{ delay: 1200, duration: 500,  start: 1.5, opacity: 0.0, easing: quartIn}}> ({score_level}) </h3>
 {/key} 
 
-<div class="card">
+<div class="card justify-center items-center w-80">
   <div class="text-lg font-bold">
     <span>
       Score 
@@ -141,18 +141,6 @@
     <NextBtns {isAlive} {nextQuestion} {retry} />
   {/if}
 </div>
-
-<button
-  on:click={() => {
-    const r = window.confirm("메인으로 돌아가시겠습니까?") 
-    if (r) {
-      is_game_mode = false;
-      window.location.href = '/';
-    }
-  }}
->
-  메인으로
-</button>
 
 <style>
   .quiz_title{

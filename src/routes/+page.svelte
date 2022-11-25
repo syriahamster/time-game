@@ -1,31 +1,28 @@
 <script>
-	import Home from '/src/lib/Home.svelte';
 	import '/src/app.css';
-	let darkmode = 'light';
-
-	const toggleDarkMode = () => {
-		darkmode = darkmode === 'dark' ? 'light' : 'dark';
-		if (darkmode === 'dark') document.documentElement.classList.add('dark');
-		else document.documentElement.classList.remove('dark');
-	};
 </script>
 
 <svelte:head>
-	<title>타임 게임</title>
+	<title>연도 게임</title>
 </svelte:head>
 
 <main class="bg-white dark:bg-slate-800">
 	<div class="flex flex-col h-screen p-4">
-		<div class="flex flex-row-reverse mb-2 p-4">
-			{#if darkmode === 'light'}
-				<button class="btn bg-slate-100" on:click={toggleDarkMode}>🌙</button>
-			{:else}
-				<button class="btn bg-slate-700" on:click={toggleDarkMode}>🌞</button>
-			{/if}
-		</div>
-		<Home />
-		<a href="/kor_history"><button>근현대 한국사 측정기</button></a>
-		<br />
-		<p>svelte kit doc : <a href="https://kit.svelte.dev">kit.svelte.dev</a></p>
+		<h2 class="service_title dark:text-white">연도 맞추기</h2>
+		<br>
+		<a href="/kor_history"><button class="btn">근현대 한국사</button></a>
+		<a href="/kor_trand"><button class="btn">최신 트랜드</button></a>
+		<a href="/world_history"><button class="btn">근현대 세계사</button></a>
 	</div>
 </main>
+
+<style>
+	
+.service_title{
+    font-size: 35px;
+    font-weight: 700;
+}
+.btn {
+	margin: 10px 10px;
+}
+</style>

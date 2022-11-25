@@ -14,7 +14,6 @@
     min={year_range_start}
     max={year_range_end}
     bind:value={current}
-    class="range"
     id="myRange"
     style="width: 100%;"
 />
