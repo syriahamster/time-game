@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-    <title>한국사 수준 측정기</title>
+    <title>타임 게임</title>
 </svelte:head>
 
 <main>
