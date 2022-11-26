@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import { fade, fly, scale } from "svelte/transition";
   import { tweened } from "svelte/motion";
   import { quartIn } from 'svelte/easing'
@@ -24,8 +25,16 @@
   let showNextBtn = false;
   let questionIdx = 0;
 
-  questionAnswerMap.sort(() => Math.random() - 0.5); //shuffe quiz array
-  let showAnswer = questionAnswerMap[questionIdx].year;
+  let showAnswer = ""
+  let showQuestion = ""
+  let showDescription = ""
+  
+  onMount(() => {
+    questionAnswerMap.sort(() => Math.random() - 0.5); //shuffe quiz array
+    showAnswer = questionAnswerMap[questionIdx].year;
+    showQuestion = questionAnswerMap[questionIdx].question;
+    showDescription = questionAnswerMap[questionIdx].description;
+	});
 
   let animatedLife = tweened(life, {
     interpolate: (frm, to) => (t) => Math.floor(frm + (to - frm) * t),
@@ -65,7 +74,7 @@
       } else if (lifeLost <= 5) {
         score += 1;
       }
-    } else {
+    } else { // correct answer
       score += 3;
     }
 
@@ -84,6 +93,8 @@
     mode = "input";
     showNextBtn = false;
     showAnswer = questionAnswerMap[questionIdx].year;
+    showQuestion = questionAnswerMap[questionIdx].question;
+    showDescription = questionAnswerMap[questionIdx].description;
 
     clearTimeout(lifeAnimationTimeout);
     animatedLife.set(life);
@@ -93,6 +104,9 @@
     questionAnswerMap.sort(() => Math.random() - 0.5);
     questionIdx = 0;
     showAnswer = questionAnswerMap[questionIdx].year;
+    showQuestion = questionAnswerMap[questionIdx].question;
+    showDescription = questionAnswerMap[questionIdx].description;
+
     score = 0;
     life = 100;
     mode = "input";
@@ -135,15 +149,15 @@
   <div class="text-xl font-bold">
     Quiz {questionIdx+1}.
   </div>
-  <div class="leading-normal">
-    {@html questionAnswerMap[questionIdx].question}
+  <div class="leading-normal" in:fade={{delay: 500, duration: 500}}>
+    {@html showQuestion}
   </div>
   {#if mode === "input"}
     <InputSection bind:current {enterGuess} year_range_start={yearRange.start} year_range_end={yearRange.end} />
   {:else if mode === "result"}
     <ResultSection {questionAnswerMap} {current} {questionIdx} {lifeLost}>
       <div class="p-4 m-2 bg-gray-200 border-green-900 rounded-md text-sm break-keep dark:text-black" in:fade={{ delay: 1600, duration: 500 }}>
-        {@html questionAnswerMap[questionIdx].description}
+        {@html showDescription}
       </div>
     </ResultSection>
   {/if}
