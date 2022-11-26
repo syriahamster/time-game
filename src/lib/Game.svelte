@@ -31,7 +31,7 @@
     interpolate: (frm, to) => (t) => Math.floor(frm + (to - frm) * t),
   });
   let lifeAnimationTimeout;
- 
+  
   let score_level = "측정중.."
   const updateScoreLevel = () => {
     try {
@@ -54,8 +54,13 @@
             duration: lifeLost * 50,
           };
       }, 2000);
+      if (lifeLost <= 3) {
+        score += 2;
+      } else if (lifeLost <= 5) {
+        score += 1;
+      }
     } else {
-      score += 1;
+      score += 3;
     }
 
     // if (life >= 0) {
@@ -116,9 +121,9 @@
         </span>
       {/key}
     </span>
-   <span>
-     ❤️x{$animatedLife}
-   </span>
+    <span>
+      ❤️x{$animatedLife}
+    </span>
   </div>
   <br />
   <div class="text-xl font-bold">
@@ -143,7 +148,7 @@
 </div>
 
 <style>
-  .quiz_title{
+  .quiz_title {
     font-size: 20px;
     font-weight: 500;
   }
