@@ -124,8 +124,8 @@
   <div class="text-xl font-bold">
     Quiz {questionIdx+1}.
   </div>
-  <div>
-   언제일까? {@html questionAnswerMap[questionIdx].question}
+  <div class="leading-normal">
+    {@html questionAnswerMap[questionIdx].question}
   </div>
   {#if mode === "input"}
     <InputSection bind:current {enterGuess} year_range_start={yearRange.start} year_range_end={yearRange.end} />
