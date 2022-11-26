@@ -149,7 +149,7 @@
   {/if}
 
   {#if showNextBtn}
-    <NextBtns {isAlive} {nextQuestion} {retry} />
+    <NextBtns {isAlive} {nextQuestion} {retry} {score}/>
   {/if}
 </div>
 
