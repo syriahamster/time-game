@@ -33,14 +33,19 @@
   let lifeAnimationTimeout;
   
   let score_level = "측정중.."
+
+  let last_key = 0
   const updateScoreLevel = () => {
-    try {
-      if (score > 0 && quizdata["score_level"][score.toFixed(0)]){
-        score_level = quizdata["score_level"][score.toFixed(0)]
+    let lv_keys = Object.keys(quizdata["score_level"])
+
+    for (let key of lv_keys){
+      let int_key = parseInt(key)
+      if (int_key > last_key && score >= key) {
+        last_key = int_key
       }
-    } catch {
-      console.log("skip calculate score_level")      
     }
+    score_level = quizdata["score_level"][last_key.toString()]
+    
   }
 
   const enterGuess = () => {
@@ -54,6 +59,7 @@
             duration: lifeLost * 50,
           };
       }, 2000);
+
       if (lifeLost <= 3) {
         score += 2;
       } else if (lifeLost <= 5) {
