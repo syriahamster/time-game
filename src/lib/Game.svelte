@@ -43,17 +43,17 @@
   
   let score_level = "측정중.."
 
-  let last_key = 0
+  let last_level_score = 0
   const updateScoreLevel = () => {
     let lv_keys = Object.keys(quizdata["score_level"])
 
     for (let key of lv_keys){
       let int_key = parseInt(key)
-      if (int_key > last_key && score >= key) {
-        last_key = int_key
+      if (int_key > last_level_score && score >= key) {
+        last_level_score = int_key
       }
     }
-    score_level = quizdata["score_level"][last_key.toString()]
+    score_level = quizdata["score_level"][last_level_score.toString()]
     
   }
 
@@ -110,6 +110,7 @@
     score = 0;
     life = 100;
     mode = "input";
+    last_level_score = 0
 
     showNextBtn = false;
     animatedLife.set(life),
