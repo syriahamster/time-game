@@ -60,7 +60,7 @@
             <div class="button_group">
                 <button class="btn btn-warning " on:click={() => retry()}
                     >게임 다시하기</button>
-                <a href="/kor_history"><button class="btn btn-primary">다른 게임 보기</button></a>
+                <a href="/"><button class="btn btn-primary">다른 게임 보기</button></a>
             </div>
             <!-- <br> -->
         </div>
