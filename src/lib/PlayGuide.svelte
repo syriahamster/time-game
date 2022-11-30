@@ -35,15 +35,15 @@
 
 <style>
 .custom_modal {
-    padding : 50px 50px;
+    padding : 7% 7%;
     background-color: rgba(50,50,50,0.85);
     color: #ffffff;
     /* display: none; */
     position: absolute;
     border-radius: 20px;
     top: 10%;
-    left: 10%;
-    width: 80%;
+    left: 7%;
+    width: 86%;
     height: auto;
     z-index: 1;
 }
