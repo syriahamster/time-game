@@ -51,10 +51,10 @@
     background-color: rgba(20,20,20,0.7);
     /* display: none; */
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vw;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 80vh;
     z-index: 0;
 }
 
