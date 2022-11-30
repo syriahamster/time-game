@@ -18,7 +18,7 @@
         </span>
     {:else}
         <span in:fade={{delay:800, duration:500}}>
-            <b class="red">{lifeLost}</b>년
+            <b class="red">{lifeLost}</b>년 차이
         </span>
     {/if}
 </div>
