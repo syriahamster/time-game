@@ -7,7 +7,7 @@
 </svelte:head>
 
 <main class="bg-white dark:bg-slate-800">
-	<div class="flex flex-col h-screen p-4">
+	<div class="flex flex-col h-screen p-4 items-center">
 		<h2 class="service_title dark:text-white">연도 맞추기</h2>
 		<br>
 		<a href="/kor_history"><button class="btn">근현대 한국사</button></a>
