@@ -3,14 +3,14 @@
   import { fade, fly, scale } from "svelte/transition";
   import { tweened } from "svelte/motion";
   import { quartIn } from 'svelte/easing'
-  import questionDefalut from "/src/static/quiz_kor_history.json";
+  // import questionDefalut from "static/kor_history.json";
   import InputSection from "./InputSection.svelte";
   import ResultSection from "./ResultSection.svelte";
   import PlayGuide from "./PlayGuide.svelte";
   import NextBtns from "./NextBtns.svelte";
 
-  export let quizdata = questionDefalut;
-  export let is_game_mode = true;
+  export let quizdata = {};
+  // export let is_game_mode = true;
   let is_show_playguide = false;
 
   const quiz_title = quizdata["title"]

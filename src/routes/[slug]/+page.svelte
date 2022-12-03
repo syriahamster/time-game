@@ -3,24 +3,57 @@
     import Game from '/src/lib/Game.svelte';
     import "/src/app.css";
     import { fade } from 'svelte/transition';
-    import quizKorHistory from '/src/static/quiz_kor_history.json'
-
+	import { onMount } from 'svelte';
+    
     let is_game_mode = true
-    let quizData = quizKorHistory
+    let is_init_done = false
+    let quizData 
+    let game_title = "loading.."
+    let error_log = ""
+    let endpoint_name = $page.params.slug
+    console.log(endpoint_name)
+    
+    async function load_game_data(){
+        try{
+            const res = await fetch("/game_config/"+endpoint_name+".json")
+            quizData = await res.json()
+            game_title = quizData.title
+            is_init_done = true
+        } catch (err) {
+            console.log(err)
+            error_log = err
+            game_title = "잘못된 접근입니다"
+        }
+    }
+
+    onMount(() => {
+        load_game_data();
+	});
+
 
 </script>
 
 <svelte:head>
-    <title>{$page.params.slug} 타임 게임</title>
+    <title>{game_title} - {$page.params.slug}</title>
 </svelte:head>
 
 <main>
+    dynamic page name : {$page.params.slug}<hr><br>
+
     <div class="card">
         <div class="quiz_section" in:fade="{{delay:200, duration:500}}">
-            dynamic page name : {$page.params.slug}
-            <Game bind:is_game_mode
-                quizdata={quizData}>
-            </Game>
+            {#if is_init_done}
+                <Game bind:is_game_mode
+                    quizdata={quizData}>
+                </Game>
+            {:else if error_log}
+                {game_title} - {endpoint_name}
+                <hr><br>
+                error log -----
+                <pre>{error_log}</pre>
+            {:else}
+                {game_title} - {endpoint_name}
+            {/if}
         </div>
     </div>
 
