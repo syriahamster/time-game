@@ -43,6 +43,9 @@
 				<a href="/{game_name}"><button class="btn">{i+1}. {game_name}</button></a>
 				<!-- <span>{game_name}</span> -->
 			{/each}
+
+			<a href="/mbti_test"><button class="btn">mbti_test</button></a>
+			
 			{/if}
 		</div>
 	</div>

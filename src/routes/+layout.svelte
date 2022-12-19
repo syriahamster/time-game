@@ -1,6 +1,7 @@
 <script>
 </script>
 <div class="">
+	<!-- <div class="ad_example upper">상단광고 냠냠</div> -->
 	<div class="flex justify-center items-center"></div>
 	<div class="flex flex-row-reverse mb-2 p-4">
 
@@ -8,4 +9,14 @@
 	<div class="flex justify-center items-center dark:text-white">
 		<slot />
 	</div>
+	<div class="ad_example lower">하단광고 냠냠</div>
 </div>
+
+<style>
+.ad_example {
+	background-color: rgba(255,255,255,0.3);
+	width : 100%;
+	height: 120px;
+	margin: 20px 10px;
+}
+</style>
