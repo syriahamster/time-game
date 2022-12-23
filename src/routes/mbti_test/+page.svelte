@@ -5,7 +5,6 @@
     import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
     
-    let is_game_mode = true
     let is_init_done = false
     let TestData 
     let test_title = "loading.."
@@ -31,18 +30,18 @@
         load_mbti_data();
 	});
 
-
 </script>
 
 <svelte:head>
-    <title>{test_title} - {$page.params.slug}</title>
+    <!-- <title>{test_title} - {$page.params.slug}</title> -->
+    <title>{test_title}</title>
 </svelte:head>
 
 <main>
-    dynamic page name : {$page.params.slug}<hr><br>
+    <!-- dynamic page name : {$page.params.slug}<hr><br> -->
 
-    <div class="card">
-        <div class="quiz_section" in:fade="{{delay:200, duration:500}}">
+    <div class="card main_view">
+        <div class="" in:fade="{{delay:200, duration:500}}">
             {#if is_init_done}
                 <Main TestData={TestData}>
                 </Main>
@@ -59,3 +58,42 @@
 
 </main>
 
+<style>
+    .main_view {
+        width: 50%;
+        min-width: 500px;
+    }
+    .icon_btn_group{
+      text-align: right;
+      width: 100%;
+      height: 0px;
+      opacity: 50%;
+    }
+    .icon_btn {
+      cursor: pointer;
+    }
+    .quiz_title {
+      font-size: 20px;
+      font-weight: 500;
+      text-align: center;
+    }
+  
+    .quiz_intro {
+      font-size: 15px;
+      font-weight: 300;
+      text-align: center;
+      width: 50%;
+      margin : 0 25%;
+    }
+  
+    .quiz_section {
+      display: flex;
+    }
+    .card {
+      margin: 10px;
+      padding: 10px 20px;
+      line-height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: 1s;
+    }
+  </style>
