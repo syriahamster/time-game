@@ -39,7 +39,7 @@
 
 </script>
 
-<div class="card">
+<div class="card flex justify-center items-center w-80">
     <span>{itemIdx+1}. {nowQuestion.q_title}</span><br>
     <span>{nowQuestion.q_contents}</span><br>
     {#each Object.entries(nowQuestion.answer) as [key, val], idx}
