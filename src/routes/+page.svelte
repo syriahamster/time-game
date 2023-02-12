@@ -31,7 +31,7 @@
 
 <main class="bg-white dark:bg-slate-800">
 	<div class="flex flex-col h-screen p-4 items-center">
-		<h2 class="service_title dark:text-white">타임 게임 메인</h2>
+		<h2 class="service-title dark:text-white">타임 게임 메인</h2>
 		<br>
 		<hr>
 		<div>
@@ -53,7 +53,7 @@
 
 <style>
 	
-.service_title{
+.service-title{
     font-size: 35px;
     font-weight: 700;
 }

@@ -11,7 +11,7 @@
     in:fly={{delay:400, duration:500, opacity:0, y:-20}} 
     out:fly={{duration:500, opacity:0, y:-20}}>
 
-    <h2 class="quizTitle m-2"> {quizTitle} </h2>
+    <h2 class="quiz-title m-2"> {quizTitle} </h2>
 
     <h4 class="quiz-intro m-2"> {@html quizIntro} </h4>
 
@@ -58,7 +58,7 @@
     z-index: 0;
 }
 
-.quizTitle {
+.quiz-title {
     font-size: 25px;
     font-weight: 500;
     text-align: center;

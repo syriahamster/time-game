@@ -40,7 +40,7 @@
 <main>
     <!-- dynamic page name : {$page.params.slug}<hr><br> -->
 
-    <div class="card main_view">
+    <div class="card main-view">
         <div class="" in:fade="{{delay:200, duration:500}}">
             {#if is_init_done}
                 <Main TestData={TestData}>
@@ -59,35 +59,9 @@
 </main>
 
 <style>
-    .main_view {
+    .main-view {
         width: 50%;
         min-width: 500px;
-    }
-    .icon_btn_group{
-      text-align: right;
-      width: 100%;
-      height: 0px;
-      opacity: 50%;
-    }
-    .icon_btn {
-      cursor: pointer;
-    }
-    .quiz-title {
-      font-size: 20px;
-      font-weight: 500;
-      text-align: center;
-    }
-  
-    .quiz-intro {
-      font-size: 15px;
-      font-weight: 300;
-      text-align: center;
-      width: 50%;
-      margin : 0 25%;
-    }
-  
-    .quiz_section {
-      display: flex;
     }
     .card {
       margin: 10px;

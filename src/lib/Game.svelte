@@ -144,10 +144,10 @@
   <h3 class="quiz-title" in:scale={{ delay: 1200, duration: 500,  start: 1.5, opacity: 0.0, easing: quartIn}}> ({scoreLevel}) </h3>
 {/key} 
 
-<div class="quiz_section justify-center items-center">
+<div class="quiz-section justify-center items-center">
   <div class="card justify-center items-center w-80">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="icon_btn_group"> <span class="icon_btn" on:click={()=>{showPlayGuide()}}>🤔</span></div>
+    <div class="icon-btn-group"> <span class="icon-btn" on:click={()=>{showPlayGuide()}}>🤔</span></div>
 
     <div class="text-lg font-bold">
       <span>
@@ -195,13 +195,13 @@
 
 
 <style>
-  .icon_btn_group{
+  .icon-btn-group{
     text-align: right;
     width: 100%;
     height: 0px;
     opacity: 50%;
   }
-  .icon_btn {
+  .icon-btn {
     cursor: pointer;
   }
   .quiz-title {
@@ -218,7 +218,7 @@
     margin : 0 25%;
   }
 
-  .quiz_section {
+  .quiz-section {
     display: flex;
   }
   .card {

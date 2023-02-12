@@ -41,7 +41,7 @@
     dynamic page name : {$page.params.slug}<hr><br>
 
     <div class="card">
-        <div class="quiz_section" in:fade="{{delay:200, duration:500}}">
+        <div class="quiz-section" in:fade="{{delay:200, duration:500}}">
             {#if is_init_done}
                 <Game bind:is_game_mode
                     quizdata={quizData}>

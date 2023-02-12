@@ -23,7 +23,7 @@
             <div class="font-bold">게임 공유하기</div>
             <!-- share copy link -->
             
-            <div class="button_group">
+            <div class="button-group">
                 <button class="btn mb-2 gap-2" on:click={() => {
                     navigator.clipboard.writeText(url)
                     window.alert("링크가 복사되었습니다")
@@ -69,7 +69,7 @@
 </div>
 
 <style>
-.button_group {
+.button-group {
     margin: 10px 10px;
 }
 </style>
