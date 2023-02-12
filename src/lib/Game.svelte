@@ -11,11 +11,11 @@
 
   export let quizdata = {};
   // export let is_game_mode = true;
-  let is_show_playguide = false;
+  let isShowPlayguide = false;
 
-  const quiz_title = quizdata["title"]
-  const quiz_intro = quizdata["intro"]
-  const play_desc = quizdata["play_desc"]
+  const quizTitle = quizdata["title"]
+  const quizIntro = quizdata["intro"]
+  const playDesc = quizdata["play_desc"]
   const yearRange = quizdata["year_range"]
   const questionAnswerMap = quizdata["question_list"];
 
@@ -38,7 +38,7 @@
     showAnswer = questionAnswerMap[questionIdx].year;
     showQuestion = questionAnswerMap[questionIdx].question;
     showDescription = questionAnswerMap[questionIdx].description;
-    is_show_playguide = true;
+    isShowPlayguide = true;
 	});
 
   let animatedLife = tweened(life, {
@@ -46,11 +46,11 @@
   });
   let lifeAnimationTimeout;
   
-  let score_level = "측정중.."
+  let scoreLevel = "측정중.."
 
   let last_level_score = 0
   const updateScoreLevel = () => {
-    let lv_keys = Object.keys(quizdata["score_level"])
+    let lv_keys = Object.keys(quizdata["scoreLevel"])
 
     for (let key of lv_keys){
       let int_key = parseInt(key)
@@ -58,7 +58,7 @@
         last_level_score = int_key
       }
     }
-    score_level = quizdata["score_level"][last_level_score.toString()]
+    scoreLevel = quizdata["scoreLevel"][last_level_score.toString()]
     
   }
 
@@ -122,7 +122,7 @@
       {
         duration: 100 * 50,
       };
-    score_level = "측정중.."
+    scoreLevel = "측정중.."
   };
 
   const isAlive = () => {
@@ -130,18 +130,18 @@
   };
 
   const showPlayGuide = () => {
-    is_show_playguide = true
+    isShowPlayguide = true
   };
 
 </script>
 
-<h2 class="quiz_title"> {quiz_title} </h2>
+<h2 class="quiz-title"> {quizTitle} </h2>
 
-<h4 class="quiz_intro"> {@html quiz_intro} </h4>
+<h4 class="quiz-intro"> {@html quizIntro} </h4>
 
 <br>
-{#key score_level} 
-  <h3 class="quiz_title" in:scale={{ delay: 1200, duration: 500,  start: 1.5, opacity: 0.0, easing: quartIn}}> ({score_level}) </h3>
+{#key scoreLevel} 
+  <h3 class="quiz-title" in:scale={{ delay: 1200, duration: 500,  start: 1.5, opacity: 0.0, easing: quartIn}}> ({scoreLevel}) </h3>
 {/key} 
 
 <div class="quiz_section justify-center items-center">
@@ -171,7 +171,7 @@
       {@html showQuestion}
     </div>
     {#if mode === "input"}
-      <InputSection bind:current {enterGuess} year_range_start={yearRange.start} year_range_end={yearRange.end} />
+      <InputSection bind:current {enterGuess} yearRangeStart={yearRange.start} yearRangeEnd={yearRange.end} />
     {:else if mode === "result"}
       <ResultSection {questionAnswerMap} {current} {questionIdx} {lifeLost}>
         <div class="p-4 m-2 bg-gray-200 border-green-900 rounded-md text-sm break-keep dark:text-black" in:fade={{ delay: 1600, duration: 500 }}>
@@ -181,14 +181,14 @@
     {/if}
   
     {#if showNextBtn}
-      <NextBtns {isAlive} {nextQuestion} {retry} {score} {score_level}/>
+      <NextBtns {isAlive} {nextQuestion} {retry} {score} {scoreLevel}/>
     {/if}
   </div>
 
 </div>
 
-{#if is_show_playguide}
-  <PlayGuide bind:is_show_playguide {quiz_title} {quiz_intro} {play_desc}>
+{#if isShowPlayguide}
+  <PlayGuide bind:isShowPlayguide {quizTitle} {quizIntro} {playDesc}>
   
   </PlayGuide>
 {/if}
@@ -204,13 +204,13 @@
   .icon_btn {
     cursor: pointer;
   }
-  .quiz_title {
+  .quiz-title {
     font-size: 20px;
     font-weight: 500;
     text-align: center;
   }
 
-  .quiz_intro {
+  .quiz-intro {
     font-size: 15px;
     font-weight: 300;
     text-align: center;

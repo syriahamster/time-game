@@ -72,13 +72,13 @@
     .icon_btn {
       cursor: pointer;
     }
-    .quiz_title {
+    .quiz-title {
       font-size: 20px;
       font-weight: 500;
       text-align: center;
     }
   
-    .quiz_intro {
+    .quiz-intro {
       font-size: 15px;
       font-weight: 300;
       text-align: center;

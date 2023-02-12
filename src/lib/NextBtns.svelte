@@ -4,7 +4,7 @@
     export let nextQuestion
     export let retry
     export let score
-    export let score_level
+    export let scoreLevel
 
     let url = "https://time-game.pages.dev/"
 </script>
@@ -18,7 +18,7 @@
         <div class="w-full flex flex-col justify-center items-center">
             <div class="font-bold">게임이 끝났습니다</div>
             <br>
-            <div class="font-bold text-center">게임결과 당신의 레벨은 <br>"{score_level}"로 측정되었습니다.</div>
+            <div class="font-bold text-center">게임결과 당신의 레벨은 <br>"{scoreLevel}"로 측정되었습니다.</div>
             <br>
             <div class="font-bold">게임 공유하기</div>
             <!-- share copy link -->

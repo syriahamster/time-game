@@ -4,9 +4,9 @@
     export let TestData
 
     let calculateOrder = TestData.qtypes_order
-    let mbti_personalities = TestData.personalities
-    let user_MBTI = "unknown"
-    let user_character = {}
+    let mbtiPersonalities = TestData.personalities
+    let userMBTI = "unknown"
+    let userCharacter = {}
 
     const calculateMBTI = () => {
         let MBTI = ""
@@ -39,18 +39,18 @@
     }
 
     onMount(() => {
-        user_MBTI = calculateMBTI()
-        console.log(user_MBTI)
+        userMBTI = calculateMBTI()
+        console.log(userMBTI)
 
-        user_character = mbti_personalities[user_MBTI]
+        userCharacter = mbtiPersonalities[userMBTI]
 
     })
 
 </script>
 
 <div class="card justify-center items-center">
-    MBTI : {user_MBTI}
+    MBTI : {userMBTI}
     <hr>
-    {user_character.name}<br>
-    {user_character.info}
+    {userCharacter.name}<br>
+    {userCharacter.info}
 </div>

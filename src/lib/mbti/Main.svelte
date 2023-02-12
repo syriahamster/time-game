@@ -4,20 +4,18 @@
     import PlayGuide from "$lib/PlayGuide.svelte";
     
     export let TestData
-    console.log(TestData)
-    let is_show_playguide = true
+    let isShowPlayguide = true
     let mode = "main"
     let Answers = {}
 
-    const reset_data = () => {
+    const resetData = () => {
         Answers = {}
     }
-
-
+    
 </script>
 
-{#if is_show_playguide}
-    <PlayGuide bind:is_show_playguide quiz_title={TestData.title} quiz_intro={TestData.intro} play_desc={TestData.play_desc}>
+{#if isShowPlayguide}
+    <PlayGuide bind:isShowPlayguide quizTitle={TestData.title} quizIntro={TestData.intro} play_desc={TestData.play_desc}>
     
     </PlayGuide>
 {/if}
@@ -37,14 +35,14 @@
           >
 
     </Test>
-    <button class="btn" on:click={()=>{mode="main"; reset_data()}}>go back</button>
+    <button class="btn" on:click={()=>{mode="main"; resetData()}}>go back</button>
 
 {:else if mode=="result"}
     <Result {Answers}
             {TestData}>
 
     </Result>    
-    <button class="btn" on:click={()=>{mode="main"; reset_data()}}>go back</button>
+    <button class="btn" on:click={()=>{mode="main"; resetData()}}>go back</button>
 
 {:else}
 

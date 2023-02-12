@@ -21,7 +21,7 @@
     "default_life":2022,
     "quiz_max":30,
     "score_rule":{},
-    "score_level": {
+    "scoreLevel": {
         "0":"배아",
         "1":"태아",
         "2":"신생아",

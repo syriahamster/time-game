@@ -1,8 +1,8 @@
 <script>
     export let current
     export let enterGuess
-    export let year_range_start = 1900
-    export let year_range_end = 2022
+    export let yearRangeStart = 1900
+    export let yearRangeEnd = 2022
 </script>
 
 <div>
@@ -11,8 +11,8 @@
 
 <input
     type="range"
-    min={year_range_start}
-    max={year_range_end}
+    min={yearRangeStart}
+    max={yearRangeEnd}
     bind:value={current}
     id="myRange"
     style="width: 100%;"
