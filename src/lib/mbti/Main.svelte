@@ -15,7 +15,7 @@
 </script>
 
 {#if isShowPlayguide}
-    <PlayGuide bind:isShowPlayguide quizTitle={TestData.title} quizIntro={TestData.intro} play_desc={TestData.play_desc}>
+    <PlayGuide bind:isShowPlayguide quizTitle={TestData.title} quizIntro={TestData.intro} playDesc={TestData.play_desc}>
     
     </PlayGuide>
 {/if}
