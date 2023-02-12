@@ -4,24 +4,24 @@
     //getting game_config json files
     const gameConfigs = import.meta.glob("/static/game_config/*.json",{'as':'raw'});
     // console.log(gameConfigs)
-	let is_init_done = false
-	let game_name_list = []
-	let game_obj_list = []
+	let isInitDone = false
+	let gameNameList = []
+	let gameObjList = []
 
     for (const configPath in gameConfigs) {
         // console.log(configPath)
         // console.log(gameConfigs[configPath])
 		let gameConfObj
 		let game_name = configPath.replace('/static/game_config/',"").replace('.json',"")
-		game_name_list.push(game_name)
+		gameNameList.push(game_name)
 		gameConfigs[configPath]().then((res) => {
 			gameConfObj = JSON.parse(res)
 			gameConfObj.game_name = game_name
 			// console.log(gameConfObj)
-			game_obj_list.push(gameConfObj)
+			gameObjList.push(gameConfObj)
 		});
     }
-	is_init_done = true
+	isInitDone = true
 
 </script>
 
@@ -36,10 +36,10 @@
 		<hr>
 		<div>
 			<!-- <a href="/kor_history"><button class="btn">근현대 한국사</button></a> -->
-			{#if is_init_done}
-			<!-- {#each game_obj_list as {game_name, title}, i} -->
+			{#if isInitDone}
+			<!-- {#each gameObjList as {game_name, title}, i} -->
 			<!-- <a href="/{game_name}"><button class="btn">{i}. {title}</button></a> -->
-			{#each game_name_list as game_name, i}
+			{#each gameNameList as game_name, i}
 				<a href="/{game_name}"><button class="btn">{i+1}. {game_name}</button></a>
 				<!-- <span>{game_name}</span> -->
 			{/each}

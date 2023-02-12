@@ -12,30 +12,30 @@
         let MBTI = ""
         for(let qtype of calculateOrder){
             let answer_arr = Answers[qtype]
-            let character_type = getMostFrequentItem(answer_arr)
-            MBTI += character_type
+            let characterType = getMostFrequentItem(answer_arr)
+            MBTI += characterType
         }
         return MBTI
     }
 
     const getMostFrequentItem = (arr) => {
-        let arr_items = {}
-        let max_info = {"cnt":0, "item":null}
+        let arrItems = {}
+        let maxInfo = {"cnt":0, "item":null}
 
         arr.forEach(e => {
-            arr_items[e] = !!arr_items[e] ? arr_items[e] + 1 : 1
+            arrItems[e] = !!arrItems[e] ? arrItems[e] + 1 : 1
         });
 
-        console.log(arr_items)
+        console.log(arrItems)
         
-        for (let [item, cnt] of Object.entries(arr_items)){
-            if (cnt > max_info.cnt){
-                max_info.cnt = cnt
-                max_info.item = item
+        for (let [item, cnt] of Object.entries(arrItems)){
+            if (cnt > maxInfo.cnt){
+                maxInfo.cnt = cnt
+                maxInfo.item = item
             } 
         }
 
-        return max_info.item
+        return maxInfo.item
     }
 
     onMount(() => {
