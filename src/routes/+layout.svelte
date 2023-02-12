@@ -9,7 +9,7 @@
 	<div class="flex justify-center items-center dark:text-white">
 		<slot />
 	</div>
-	<div class="ad-example lower">하단광고 냠냠</div>
+	<!-- <div class="ad-example lower">하단광고 냠냠</div> -->
 </div>
 
 <style>

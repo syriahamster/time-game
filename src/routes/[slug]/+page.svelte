@@ -38,7 +38,7 @@
 </svelte:head>
 
 <main>
-    dynamic page name : {$page.params.slug}<hr><br>
+    <!-- dynamic page name : {$page.params.slug}<hr><br> -->
 
     <div class="card">
         <div class="quiz-section" in:fade="{{delay:200, duration:500}}">
